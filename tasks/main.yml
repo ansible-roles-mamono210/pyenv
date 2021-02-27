@@ -1,0 +1,9 @@
+---
+## Install pyenv
+- include_tasks: pyenv.yml
+
+## Install Pytho(s)
+- include_tasks: global_install.yml
+
+# Change the Python version
+- include_tasks: global.yml

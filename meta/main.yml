@@ -1,0 +1,14 @@
+---
+galaxy_info:
+  role_name: pyenv
+  author: tomonorimatsumura
+  description: Install pyenv
+  company: no name
+  license: "license (BSD, MIT)"
+  min_ansible_version: 3.0
+  platforms:
+    - name: EL
+      versions:
+        - 7
+  galaxy_tags: []
+dependencies: []
