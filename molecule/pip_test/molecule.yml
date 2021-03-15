@@ -1,0 +1,52 @@
+---
+dependency:
+  name: galaxy
+driver:
+  name: docker
+platforms:
+  - name: pip_test
+    image: ghcr.io/docker-hub-tm/ansible-test/${MOLECULE_DISTRO:-centos7}:latest
+    command: /sbin/init
+    pre_build_image: True
+    privileged: True
+provisioner:
+  name: ansible
+  config_options:
+    defaults:
+      callback_whitelist: ansible.posix.profile_tasks
+  connection_options:
+    linux_user: github
+    pyenv_global: '3.9.2'
+    pyenv_group: github
+    pyenv_owner: github
+    pyenv_user_home: "/home/{{ linux_user }}"
+    pyenv_python_installs: ['3.9.2', '3.8.7']
+    pyenv_pip_packages:
+      - python_version: 3.9.2
+        pip_packages:
+          - name: pip
+            version: latest
+          - name: ansible
+            version: '2.9.3'
+          - name: yamllint
+          - name: docker
+        pip_executable: "{{ pyenv_user_home }}/.pyenv/versions/3.9.2/bin/pip"
+      - python_version: 3.8.7
+        pip_packages:
+          - name: pip
+            version: latest
+          - name: ansible
+          - name: yamllint
+          - name: docker
+        pip_executable: "{{ pyenv_user_home }}/.pyenv/versions/3.8.7/bin/pip"
+verifier:
+  name: ansible
+scenario:
+  test_sequence:
+    - syntax
+    - dependency
+    - create
+    - prepare
+    - converge
+    - idempotence
+    - verify

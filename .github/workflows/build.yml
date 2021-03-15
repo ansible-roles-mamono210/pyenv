@@ -46,6 +46,7 @@ jobs:
         scenario-name:
           - default
           - user_pythons_global
+          - pip_test
 
     steps:
       - uses: actions/checkout@v2

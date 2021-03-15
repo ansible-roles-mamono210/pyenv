@@ -5,4 +5,40 @@ pyenv_mode: 0755
 pyenv_user_home: /root
 pyenv_python_installs: []
 # example ['3.9.2', '3.8.8', '3.7.10']
+pyenv_pip_executable: "{{ pyenv_user_home }}/.pyenv/versions/{{ pyenv_global}}/bin/pip"
+
+# pyenv_pip_packages:
+#
+# example
+#
+# pyenv_pip_packages:
+#  - python_version: 3.9.2
+#    pip_packages:
+#      - name: pip
+#        version: latest
+#      - name: ansible
+#        version: '2.9.3'
+#      - name: yamllint
+#        state: present
+#      - name: docker
+#        pip_executable: "{{ pyenv_user_home }}/.pyenv/versions/3.9.2/bin/pip
+# - python_version: 3.8.7
+#   pip_packages:
+#     - name: pip
+#       version: latest
+#     - name: ansible
+#     - name: yamllint
+#     - name: docker
+#       pip_executable: "{{ pyenv_user_home }}/.pyenv/versions/3.8.7/bin/pip"
+#
+# required
+#   - pyenv_pip_packages.python_version
+#   - pyenv_pip_packages.pip_packages.name
+#   - pyenv_pip_packages.pip_packages.pip_executalble
+#
+# options
+#   - pyenv_pip_packages.pip_packages.version
+#   - pyenv_pip_packages.pip_packages.state
+
+pyenv_python_executable: "{{ pyenv_user_home }}/.pyenv/versions/{{ pyenv_global}}/bin/python"
 pyenv_owner: root
