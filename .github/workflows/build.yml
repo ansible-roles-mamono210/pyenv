@@ -41,6 +41,7 @@ jobs:
       matrix:
         distro:
           - centos7
+          - centos8
         python-version:
           - 3.9
         scenario-name:

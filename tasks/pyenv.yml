@@ -6,7 +6,7 @@
   changed_when: false
   ignore_errors: true
 
-- name: Install required packages
+- name: Install required packages (CentOS7)
   ansible.builtin.package:
     name: '{{ item }}'
     state: present
@@ -23,7 +23,31 @@
     - sqlite
     - sqlite-devel
     - zlib-devel
-  when: not PYENV_INSTALLED.stat.exists
+  when:
+    - ansible_distribution == "CentOS"
+    - ansible_distribution_major_version == "7"
+
+- name: Install required packages (CentOS8)
+  ansible.builtin.package:
+    name: '{{ item }}'
+    state: present
+  loop:
+    - bzip2
+    - bzip2-devel
+    - gcc
+    - git
+    - libffi-devel
+    - make
+    - openssl
+    - openssl-devel
+    - readline
+    - readline-devel
+    - sqlite
+    - sqlite-devel
+    - zlib-devel
+  when:
+    - ansible_distribution == "CentOS"
+    - ansible_distribution_major_version == "8"
 
 - name: Retrieve pyenv executable
   ansible.builtin.git:
