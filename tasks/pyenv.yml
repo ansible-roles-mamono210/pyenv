@@ -64,13 +64,14 @@
     recurse: yes
   when: not PYENV_INSTALLED.stat.exists
 
-- name: Configure .bashrc
+- name: Configure $HOME/.bash_profile
   ansible.builtin.lineinfile:
-    path: "{{ pyenv_user_home }}/.bashrc"
+    path: "{{ pyenv_user_home }}/.bash_profile"
     line: "{{ item }}"
     state: present
     insertafter: EOF
   loop:
-    - 'export PATH="{{ pyenv_user_home }}/.pyenv/bin:$PATH"'
+    - 'export PYENV_ROOT="$HOME/.pyenv"'
+    - 'export PATH="$PYENV_ROOT/bin:$PATH"'
     - 'eval "$(pyenv init -)"'
   when: not PYENV_INSTALLED.stat.exists
