@@ -1,4 +1,5 @@
 ---
+linux_user: root
 pyenv_global: ''
 pyenv_group: root
 pyenv_mode: 0755
