@@ -7,6 +7,3 @@
 
 # Install pip packages
 - include_tasks: pip_packages.yml
-
-# Change the Python version
-- include_tasks: global.yml
