@@ -1,13 +1,23 @@
 ---
+# The name of the general user or system administrator under which pyenv will be installed.
 linux_user: root
-linux_user_home: /root
-pyenv_global: ''
-pyenv_group: root
-pyenv_mode: 0755
-pyenv_root: /root/.pyenv
-pyenv_python_installs: []
-# example ['3.9.2', '3.8.8', '3.7.10']
 
+# The name of home directory of the users
+linux_user_home: /root
+
+# global Python version
+pyenv_global: ''
+
+# The group settings for directories and files under 'pyenv_root'
+pyenv_group: root
+
+# The permission settings for directories and files under 'pyenv_root'
+pyenv_mode: 0755
+
+# The owner settings for directories and files under 'pyenv_root'
+pyenv_owner: root
+
+# After the Python which version specified by pyenv has been installed under pyenv_root, specify the pip package to be installed by that Python
 # pyenv_pip_packages:
 #
 # example
@@ -22,7 +32,7 @@ pyenv_python_installs: []
 #      - name: yamllint
 #        state: present
 #      - name: docker
-#        pip_executable: "{{ pyenv_root }}/versions/3.9.2/bin/pip
+#   pip_executable: "{{ pyenv_root }}/versions/3.9.2/bin/pip
 # - python_version: 3.8.7
 #   pip_packages:
 #     - name: pip
@@ -30,7 +40,7 @@ pyenv_python_installs: []
 #     - name: ansible
 #     - name: yamllint
 #     - name: docker
-#       pip_executable: "{{ pyenv_root }}/versions/3.8.7/bin/pip"
+#   pip_executable: "{{ pyenv_root }}/versions/3.8.7/bin/pip"
 #
 # required
 #   - pyenv_pip_packages.python_version
@@ -40,6 +50,15 @@ pyenv_python_installs: []
 # options
 #   - pyenv_pip_packages.pip_packages.version
 #   - pyenv_pip_packages.pip_packages.state
+#
 
+# Specifies the version of Python that pyenv will install under 'pyenv_root'
+# example ['3.9.2', '3.8.8', '3.7.10']
+pyenv_python_installs: []
+
+# This special variable is needed when Ansible installs the pip package from pyenv. You should not change it in any particular way. If you change it, Ansible may not work properly.
 pyenv_python_executable: "{{ pyenv_root }}/versions/{{ pyenv_global}}/bin/python"
-pyenv_owner: root
+
+# The directory under which Python versions and shims reside
+# Also see https://github.com/pyenv/pyenv#environment-variables
+pyenv_root: /root/.pyenv
