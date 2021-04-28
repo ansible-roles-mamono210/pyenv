@@ -5,6 +5,8 @@
   when: pyenv_pip_packages is defined
 
 - name: Ensure pip_install_packages are installed.
+  become: yes
+  become_user: "{{ linux_user }}"
   ansible.builtin.pip:
     name: "{{ item.1.name }}"
     version: "{{ item.1.version | default(omit) }}"
