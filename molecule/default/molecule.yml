@@ -14,7 +14,7 @@ provisioner:
     defaults:
       callback_whitelist: ansible.posix.profile_tasks
   connection_options:
-    pyenv_user_home: /root
+    pyenv_root: /root/.pyenv
 verifier:
   name: ansible
 scenario:

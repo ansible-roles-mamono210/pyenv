@@ -19,7 +19,7 @@ provisioner:
     pyenv_global: '3.9.2'
     pyenv_group: github
     pyenv_owner: github
-    pyenv_user_home: "/home/{{ linux_user }}"
+    pyenv_root: "/home/{{ linux_user }}/.pyenv"
     pyenv_python_installs: ['3.9.2', '3.8.7', '3.7.10']
 verifier:
   name: ansible

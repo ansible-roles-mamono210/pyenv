@@ -7,7 +7,7 @@
       become: yes
       become_user: "{{ linux_user }}"
       ansible.builtin.shell: |
-        bash -c "{{ pyenv_user_home }}/.pyenv/bin/pyenv --version"
+        bash -c "{{ pyenv_root }}/bin/pyenv --version"
       register: PYENV_INSTALLED
       changed_when: false
 
@@ -19,7 +19,7 @@
       become: yes
       become_user: "{{ linux_user }}"
       ansible.builtin.shell: |
-        bash -c "{{ pyenv_user_home }}/.pyenv/bin/pyenv versions"
+        bash -c "{{ pyenv_root }}/bin/pyenv versions"
       register: PYENV_VERSIONS
       changed_when: false
       when:

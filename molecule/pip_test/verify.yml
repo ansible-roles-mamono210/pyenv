@@ -7,7 +7,7 @@
       become: yes
       become_user: "{{ linux_user }}"
       ansible.builtin.shell: |
-        bash -c "{{ pyenv_user_home }}/.pyenv/bin/pyenv --version"
+        bash -c "{{ pyenv_root }}/bin/pyenv --version"
       register: PYENV_INSTALLED
       changed_when: false
 
@@ -19,13 +19,13 @@
       become: yes
       become_user: "{{ linux_user }}"
       ansible.builtin.command: |
-        bash -c "{{ pyenv_user_home }}/.pyenv/bin/pyenv global 3.9.2"
+        bash -c "{{ pyenv_root }}/bin/pyenv global 3.9.2"
 
     - name: Check whether Ansible is installed
       become: yes
       become_user: "{{ linux_user }}"
       ansible.builtin.shell: |
-        bash -c "{{ pyenv_user_home }}/.pyenv/versions/3.9.2/bin/ansible --version"
+        bash -c "{{ pyenv_root }}/versions/3.9.2/bin/ansible --version"
       register: ANSIBLE_INSTALLED
       changed_when: false
 
@@ -37,7 +37,7 @@
       become: yes
       become_user: "{{ linux_user }}"
       ansible.builtin.shell: |
-        bash -c "{{ pyenv_user_home }}/.pyenv/versions/3.9.2/bin/yamllint --version"
+        bash -c "{{ pyenv_root }}/versions/3.9.2/bin/yamllint --version"
       register: YAMLLINT_INSTALLED
       changed_when: false
 
@@ -49,13 +49,13 @@
       become: yes
       become_user: "{{ linux_user }}"
       ansible.builtin.command: |
-        bash -c "{{ pyenv_user_home }}/.pyenv/bin/pyenv global 3.8.7"
+        bash -c "{{ pyenv_root }}/bin/pyenv global 3.8.7"
 
     - name: Check whether Ansible is installed
       become: yes
       become_user: "{{ linux_user }}"
       ansible.builtin.shell: |
-        bash -c "{{ pyenv_user_home }}/.pyenv/versions/3.8.7/bin/ansible --version"
+        bash -c "{{ pyenv_root }}/versions/3.8.7/bin/ansible --version"
       register: ANSIBLE_INSTALLED
       changed_when: false
 
@@ -67,7 +67,7 @@
       become: yes
       become_user: "{{ linux_user }}"
       ansible.builtin.shell: |
-        bash -c "{{ pyenv_user_home }}/.pyenv/versions/3.8.7/bin/yamllint --version"
+        bash -c "{{ pyenv_root }}/versions/3.8.7/bin/yamllint --version"
       register: YAMLLINT_INSTALLED
       changed_when: false
 
@@ -79,13 +79,13 @@
       become: yes
       become_user: "{{ linux_user }}"
       ansible.builtin.command: |
-        bash -c "{{ pyenv_user_home }}/.pyenv/bin/pyenv global \"{{ pyenv_global }}\""
+        bash -c "{{ pyenv_root }}/bin/pyenv global \"{{ pyenv_global }}\""
 
     - name: Check whether Python(s) installed by 'pyenv install' command
       become: yes
       become_user: "{{ linux_user }}"
       ansible.builtin.shell: |
-        bash -c "{{ pyenv_user_home }}/.pyenv/bin/pyenv versions"
+        bash -c "{{ pyenv_root }}/bin/pyenv versions"
       register: PYENV_VERSIONS
       changed_when: false
       when:

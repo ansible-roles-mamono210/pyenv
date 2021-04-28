@@ -1,7 +1,7 @@
 ---
 - name: Check whether pyenv is installed
   stat:
-    path: "{{ pyenv_user_home }}/.pyenv/bin/pyenv"
+    path: "{{ pyenv_root }}/bin/pyenv"
   register: PYENV_INSTALLED
   changed_when: false
   ignore_errors: true
@@ -52,12 +52,12 @@
 - name: Retrieve pyenv executable
   ansible.builtin.git:
     repo: 'https://github.com/pyenv/pyenv.git'
-    dest: "{{ pyenv_user_home }}/.pyenv"
+    dest: "{{ pyenv_root }}"
   when: not PYENV_INSTALLED.stat.exists
 
 - name: Change the ownership of pyenv executable
   ansible.builtin.file:
-    path: "{{ pyenv_user_home }}/.pyenv"
+    path: "{{ pyenv_root }}"
     owner: "{{ pyenv_owner }}"
     group: "{{ pyenv_group }}"
     mode: "{{ pyenv_mode }}"
@@ -66,7 +66,7 @@
 
 - name: Configure $HOME/.bash_profile
   ansible.builtin.lineinfile:
-    path: "{{ pyenv_user_home }}/.bash_profile"
+    path: "{{ linux_user_home }}/.bash_profile"
     line: "{{ item }}"
     state: present
     insertafter: EOF
