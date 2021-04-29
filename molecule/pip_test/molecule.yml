@@ -26,6 +26,7 @@ provisioner:
         pip_packages:
           - name: pip
             version: latest
+            extra_args: --upgrade
           - name: ansible
             version: '2.9.3'
           - name: yamllint
@@ -35,6 +36,8 @@ provisioner:
         pip_packages:
           - name: pip
             version: latest
+            extra_args: --upgrade
+          - name: ansible
           - name: ansible
           - name: yamllint
           - name: docker

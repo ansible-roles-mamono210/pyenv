@@ -21,6 +21,18 @@
       ansible.builtin.command: |
         bash -c "{{ pyenv_root }}/bin/pyenv global 3.9.2"
 
+    - name: Check pip is upgraded
+      become: yes
+      become_user: "{{ linux_user }}"
+      ansible.builtin.shell: |
+        bash -c "{{ pyenv_root }}/versions/3.9.2/bin/pip --version"
+      register: PIP_UPGRADED
+      changed_when: false
+
+    - name: Make sure pip is upgraded
+      ansible.builtin.debug:
+        var: PIP_UPGRADED
+
     - name: Check whether Ansible is installed
       become: yes
       become_user: "{{ linux_user }}"
@@ -50,6 +62,18 @@
       become_user: "{{ linux_user }}"
       ansible.builtin.command: |
         bash -c "{{ pyenv_root }}/bin/pyenv global 3.8.7"
+
+    - name: Check pip is upgraded
+      become: yes
+      become_user: "{{ linux_user }}"
+      ansible.builtin.shell: |
+        bash -c "{{ pyenv_root }}/versions/3.8.7/bin/pip --version"
+      register: PIP_UPGRADED
+      changed_when: false
+
+    - name: Make sure pip is upgraded
+      ansible.builtin.debug:
+        var: PIP_UPGRADED
 
     - name: Check whether Ansible is installed
       become: yes

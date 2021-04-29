@@ -27,6 +27,7 @@ pyenv_owner: root
 #    pip_packages:
 #      - name: pip
 #        version: latest
+#        extra_args: --upgarde
 #      - name: ansible
 #        version: '2.9.3'
 #      - name: yamllint

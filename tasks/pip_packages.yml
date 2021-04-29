@@ -12,6 +12,7 @@
     version: "{{ item.1.version | default(omit) }}"
     state: "{{ item.1.state | default(omit) }}"
     executable: "{{ item.0.pip_executable }}"
+    extra_args: "{{ item.1.extra_args | default(omit) }}"
   with_subelements:
     - "{{ pyenv_pip_packages }}"
     - pip_packages
