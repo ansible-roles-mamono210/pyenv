@@ -53,6 +53,7 @@
   ansible.builtin.git:
     repo: 'https://github.com/pyenv/pyenv.git'
     dest: "{{ pyenv_root }}"
+    version: master
   when: not pyenv_installed.stat.exists
 
 - name: Change the ownership of pyenv executable
