@@ -8,12 +8,12 @@
       become_user: "{{ linux_user }}"
       ansible.builtin.shell: |
         bash -c "{{ pyenv_root }}/bin/pyenv --version"
-      register: PYENV_INSTALLED
+      register: pyenv_installed
       changed_when: false
 
     - name: Make sure pyenv is installed
       ansible.builtin.debug:
-        var: PYENV_INSTALLED
+        var: pyenv_installed
 
     - name: Set Python 3.9.2
       become: yes
@@ -26,36 +26,36 @@
       become_user: "{{ linux_user }}"
       ansible.builtin.shell: |
         bash -c "{{ pyenv_root }}/versions/3.9.2/bin/pip --version"
-      register: PIP_UPGRADED
+      register: pip_upgraded
       changed_when: false
 
     - name: Make sure pip is upgraded
       ansible.builtin.debug:
-        var: PIP_UPGRADED
+        var: pip_upgraded
 
     - name: Check whether Ansible is installed
       become: yes
       become_user: "{{ linux_user }}"
       ansible.builtin.shell: |
         bash -c "{{ pyenv_root }}/versions/3.9.2/bin/ansible --version"
-      register: ANSIBLE_INSTALLED
+      register: ansible_installed
       changed_when: false
 
     - name: Make sure Ansible is installed
       ansible.builtin.debug:
-        var: ANSIBLE_INSTALLED
+        var: ansible_installed
 
     - name: Check whether yamllint is installed
       become: yes
       become_user: "{{ linux_user }}"
       ansible.builtin.shell: |
         bash -c "{{ pyenv_root }}/versions/3.9.2/bin/yamllint --version"
-      register: YAMLLINT_INSTALLED
+      register: yamllint_installed
       changed_when: false
 
     - name: Make sure yamllint is installed
       ansible.builtin.debug:
-        var: YAMLLINT_INSTALLED
+        var: yamllint_installed
 
     - name: Set Python 3.8.7
       become: yes
@@ -68,36 +68,36 @@
       become_user: "{{ linux_user }}"
       ansible.builtin.shell: |
         bash -c "{{ pyenv_root }}/versions/3.8.7/bin/pip --version"
-      register: PIP_UPGRADED
+      register: pip_upgraded
       changed_when: false
 
     - name: Make sure pip is upgraded
       ansible.builtin.debug:
-        var: PIP_UPGRADED
+        var: pip_upgraded
 
     - name: Check whether Ansible is installed
       become: yes
       become_user: "{{ linux_user }}"
       ansible.builtin.shell: |
         bash -c "{{ pyenv_root }}/versions/3.8.7/bin/ansible --version"
-      register: ANSIBLE_INSTALLED
+      register: ansible_installed
       changed_when: false
 
     - name: Make sure Ansible is installed
       ansible.builtin.debug:
-        var: ANSIBLE_INSTALLED
+        var: ansible_installed
 
     - name: Check whether yamllint is installed
       become: yes
       become_user: "{{ linux_user }}"
       ansible.builtin.shell: |
         bash -c "{{ pyenv_root }}/versions/3.8.7/bin/yamllint --version"
-      register: YAMLLINT_INSTALLED
+      register: yamllint_installed
       changed_when: false
 
     - name: Make sure yamllint is installed
       ansible.builtin.debug:
-        var: YAMLLINT_INSTALLED
+        var: yamllint_installed
 
     - name: Change the global Python version
       become: yes
@@ -110,7 +110,7 @@
       become_user: "{{ linux_user }}"
       ansible.builtin.shell: |
         bash -c "{{ pyenv_root }}/bin/pyenv versions"
-      register: PYENV_VERSIONS
+      register: pyenv_versions
       changed_when: false
       when:
         - pyenv_python_installs is defined
@@ -118,16 +118,16 @@
     - name: Make sure Pythons(s) installed
       ansible.builtin.assert:
         that:
-          - "'{{ item }}' in PYENV_VERSIONS.stdout"
+          - "'{{ item }}' in pyenv_versions.stdout"
       with_items: "{{ pyenv_python_installs }}"
       when:
         - pyenv_python_installs is defined
 
     - name: Check OS version
       ansible.builtin.command: cat /etc/redhat-release
-      register: OS_VERSION
+      register: os_version
       changed_when: false
 
     - name: Show OS version
       ansible.builtin.debug:
-        var: OS_VERSION
+        var: os_version

@@ -5,9 +5,9 @@
   ansible.builtin.command: |
     bash -c "{{ pyenv_root }}/bin/pyenv install \"{{ item }}\""
   with_items: "{{ pyenv_python_installs }}"
-  changed_when: PYENV_PYTHONS_INSTALLED.stderr_lines is search("Installed Python-.*.pyenv/versions/.*")
+  changed_when: pyenv_pythons_installed.stderr_lines is search("Installed Python-.*.pyenv/versions/.*")
   failed_when: false
-  register: PYENV_PYTHONS_INSTALLED
+  register: pyenv_pythons_installed
 
 - name: Check whether Python(s) installed
   become: yes
@@ -16,8 +16,8 @@
     bash -c "{{ pyenv_root }}/bin/pyenv global \"{{ item }}\""
   with_items: "{{ pyenv_python_installs }}"
   changed_when: false
-  failed_when: PYENV_PYTHON_GLOBAL is failed
-  register: PYENV_PYTHON_GLOBAL
+  failed_when: pyenv_python_global is failed
+  register: pyenv_python_global
 
 - name: Delete pyenv version file
   ansible.builtin.file:
