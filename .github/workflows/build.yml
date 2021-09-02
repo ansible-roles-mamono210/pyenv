@@ -60,6 +60,9 @@ jobs:
       - name: Install dependencies
         run: python3 -m pip install -r molecule/requirements.txt
 
+      - name: Install community.docker for Molecule can find it
+        run: ansible-galaxy collection install community.docker
+
       - name: Test with molecule
         env:
           ANSIBLE_FORCE_COLOR: '1'
