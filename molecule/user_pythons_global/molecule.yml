@@ -5,7 +5,7 @@ driver:
   name: docker
 platforms:
   - name: user_pythons_global
-    image: ghcr.io/docker-hub-tm/ansible-test/${MOLECULE_DISTRO:-centos8}:latest
+    image: ${MOLECULE_IMAGE}
     command: /sbin/init
     pre_build_image: True
     privileged: True
