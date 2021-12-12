@@ -13,7 +13,7 @@ provisioner:
   name: ansible
   config_options:
     defaults:
-      callback_whitelist: ansible.posix.profile_tasks
+      callbacks_enabled: ansible.posix.profile_tasks
   connection_options:
     linux_user: github
     pyenv_global: '3.9.2'
