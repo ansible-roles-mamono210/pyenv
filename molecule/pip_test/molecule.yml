@@ -6,9 +6,7 @@ driver:
 platforms:
   - name: pip_test
     image: ${MOLECULE_IMAGE}
-    command: /sbin/init
     pre_build_image: True
-    privileged: True
 provisioner:
   name: ansible
   config_options:
