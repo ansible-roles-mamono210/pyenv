@@ -18,6 +18,7 @@
     - libffi-devel
     - openssl
     - openssl-devel
+    - patch
     - readline
     - readline-devel
     - sqlite
@@ -40,6 +41,7 @@
     - make
     - openssl
     - openssl-devel
+    - patch
     - readline
     - readline-devel
     - sqlite
