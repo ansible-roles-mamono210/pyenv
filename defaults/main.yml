@@ -58,7 +58,7 @@ pyenv_owner: root
 pyenv_python_installs: []
 
 # This special variable is needed when Ansible installs the pip package from pyenv. You should not change it in any particular way. If you change it, Ansible may not work properly.
-pyenv_python_executable: "{{ pyenv_root }}/versions/{{ pyenv_global}}/bin/python"
+pyenv_python_executable: "{{ pyenv_root }}/versions/{{ pyenv_global }}/bin/python"
 
 # The directory under which Python versions and shims reside
 # Also see https://github.com/pyenv/pyenv#environment-variables

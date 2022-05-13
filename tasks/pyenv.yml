@@ -1,6 +1,6 @@
 ---
 - name: Check whether pyenv is installed
-  stat:
+  ansible.builtin.stat:
     path: "{{ pyenv_root }}/bin/pyenv"
   register: pyenv_installed
   changed_when: false
