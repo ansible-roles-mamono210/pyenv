@@ -3,3 +3,4 @@ parseable: true
 warn_list:
   - role-name
   - fqcn-builtins
+  - schema
