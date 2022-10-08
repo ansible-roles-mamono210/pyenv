@@ -1,9 +1,9 @@
 ---
-# Install pyenv
-- include_tasks: pyenv.yml
+- name: Install pyenv
+  include_tasks: pyenv.yml
 
-# Install Pytho(s)
-- include_tasks: global_install.yml
+- name: Install Python(s)
+  include_tasks: global_install.yml
 
-# Install pip packages
-- include_tasks: pip_packages.yml
+- name: Install pip packages
+  include_tasks: pip_packages.yml
