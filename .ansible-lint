@@ -1,5 +1,2 @@
 ---
 parseable: true
-warn_list:
-  - role-name
-  - schema
