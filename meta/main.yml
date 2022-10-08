@@ -1,7 +1,7 @@
 ---
 galaxy_info:
   role_name: pyenv
-  author: tomonorimatsumura
+  author: mamono210
   description: Install pyenv
   company: no name
   license: "license (BSD, MIT)"
