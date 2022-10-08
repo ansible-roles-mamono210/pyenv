@@ -1,9 +1,12 @@
 ---
 - name: Install pyenv
-  include_tasks: pyenv.yml
+  ansible.builtin.include_tasks:
+    file: pyenv.yml
 
 - name: Install Python(s)
-  include_tasks: global_install.yml
+  ansible.builtin.include_tasks:
+    file: global_install.yml
 
 - name: Install pip packages
-  include_tasks: pip_packages.yml
+  ansible.builtin.include_tasks:
+    file: pip_packages.yml
