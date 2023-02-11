@@ -19,7 +19,9 @@
       become: yes
       become_user: "{{ linux_user }}"
       ansible.builtin.command: |
-        bash -c "{{ pyenv_root }}/bin/pyenv global 3.9.2"
+        bash -c "{{ pyenv_root }}/bin/pyenv local 3.9.2"
+      args:
+        chdir: "/home/{{ linux_user }}"
       changed_when: false
 
     - name: Check pip is upgraded
@@ -62,7 +64,9 @@
       become: yes
       become_user: "{{ linux_user }}"
       ansible.builtin.command: |
-        bash -c "{{ pyenv_root }}/bin/pyenv global 3.8.7"
+        bash -c "{{ pyenv_root }}/bin/pyenv local 3.8.7"
+      args:
+        chdir: "/home/{{ linux_user }}"
       changed_when: false
 
     - name: Check pip is upgraded
@@ -101,11 +105,13 @@
       ansible.builtin.debug:
         var: yamllint_installed
 
-    - name: Change the global Python version
+    - name: Change the local Python version
       become: yes
       become_user: "{{ linux_user }}"
       ansible.builtin.command: |
-        bash -c "{{ pyenv_root }}/bin/pyenv global \"{{ pyenv_global }}\""
+        bash -c "{{ pyenv_root }}/bin/pyenv local \"{{ pyenv_local }}\""
+      args:
+        chdir: "/home/{{ linux_user }}"
       changed_when: false
 
     - name: Check whether Python(s) installed by 'pyenv install' command

@@ -5,7 +5,7 @@
 
 - name: Install Python(s)
   ansible.builtin.include_tasks:
-    file: global_install.yml
+    file: local_install.yml
 
 - name: Install pip packages
   ansible.builtin.include_tasks:

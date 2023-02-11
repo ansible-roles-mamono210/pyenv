@@ -4,7 +4,7 @@ dependency:
 driver:
   name: docker
 platforms:
-  - name: user_pythons_global
+  - name: user_pythons_local
     image: ${MOLECULE_IMAGE}
     pre_build_image: True
 provisioner:
@@ -14,7 +14,7 @@ provisioner:
       callbacks_enabled: ansible.posix.profile_tasks
   connection_options:
     linux_user: github
-    pyenv_global: '3.9.2'
+    pyenv_local: '3.9.2'
     pyenv_group: github
     pyenv_owner: github
     pyenv_root: "/home/{{ linux_user }}/.pyenv"

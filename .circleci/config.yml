@@ -97,6 +97,6 @@ workflows:
               molecule-scenario-name:
                 - 'default'
                 - 'pip_test'
-                - 'user_pythons_global'
+                - 'user_pythons_local'
           requires:
             - ansible-lint

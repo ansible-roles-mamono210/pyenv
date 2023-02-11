@@ -13,11 +13,13 @@
   become: yes
   become_user: "{{ linux_user }}"
   ansible.builtin.command: |
-    bash -c "{{ pyenv_root }}/bin/pyenv global \"{{ item }}\""
+    bash -c "{{ pyenv_root }}/bin/pyenv local \"{{ item }}\""
+  args:
+    chdir: "{{ pyenv_root }}"
   with_items: "{{ pyenv_python_installs }}"
   changed_when: false
-  failed_when: pyenv_python_global is failed
-  register: pyenv_python_global
+  failed_when: pyenv_python_local is failed
+  register: pyenv_python_local
 
 - name: Delete pyenv version file
   ansible.builtin.file:
