@@ -15,11 +15,11 @@
       ansible.builtin.debug:
         var: pyenv_installed
 
-    - name: Set Python 3.9.2
+    - name: Set Python 3.11.4
       become: yes
       become_user: "{{ linux_user }}"
       ansible.builtin.command: |
-        bash -c "{{ pyenv_root }}/bin/pyenv local 3.9.2"
+        bash -c "{{ pyenv_root }}/bin/pyenv local 3.11.4"
       args:
         chdir: "/home/{{ linux_user }}"
       changed_when: false
@@ -28,7 +28,7 @@
       become: yes
       become_user: "{{ linux_user }}"
       ansible.builtin.shell: |
-        bash -c "{{ pyenv_root }}/versions/3.9.2/bin/pip --version"
+        bash -c "{{ pyenv_root }}/versions/3.11.4/bin/pip --version"
       register: pip_upgraded
       changed_when: false
 
@@ -40,7 +40,7 @@
       become: yes
       become_user: "{{ linux_user }}"
       ansible.builtin.shell: |
-        bash -c "{{ pyenv_root }}/versions/3.9.2/bin/ansible --version"
+        bash -c "{{ pyenv_root }}/versions/3.11.4/bin/ansible --version"
       register: ansible_installed
       changed_when: false
 
@@ -52,7 +52,7 @@
       become: yes
       become_user: "{{ linux_user }}"
       ansible.builtin.shell: |
-        bash -c "{{ pyenv_root }}/versions/3.9.2/bin/yamllint --version"
+        bash -c "{{ pyenv_root }}/versions/3.11.4/bin/yamllint --version"
       register: yamllint_installed
       changed_when: false
 

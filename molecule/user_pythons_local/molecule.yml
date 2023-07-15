@@ -6,7 +6,7 @@ driver:
 platforms:
   - name: user_pythons_local
     image: ${MOLECULE_IMAGE}
-    pre_build_image: True
+    pre_build_image: true
 provisioner:
   name: ansible
   config_options:
@@ -14,11 +14,11 @@ provisioner:
       callbacks_enabled: ansible.posix.profile_tasks
   connection_options:
     linux_user: github
-    pyenv_local: '3.9.2'
+    pyenv_local: '3.11.4'
     pyenv_group: github
     pyenv_owner: github
     pyenv_root: "/home/{{ linux_user }}/.pyenv"
-    pyenv_python_installs: ['3.9.2', '3.8.7', '3.7.10']
+    pyenv_python_installs: ['3.11.4', '3.8.7', '3.7.10']
 verifier:
   name: ansible
 scenario:

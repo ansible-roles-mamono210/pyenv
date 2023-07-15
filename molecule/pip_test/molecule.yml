@@ -6,7 +6,7 @@ driver:
 platforms:
   - name: pip_test
     image: ${MOLECULE_IMAGE}
-    pre_build_image: True
+    pre_build_image: true
 provisioner:
   name: ansible
   config_options:
@@ -14,13 +14,13 @@ provisioner:
       callbacks_enabled: ansible.posix.profile_tasks
   connection_options:
     linux_user: github
-    pyenv_local: '3.9.2'
+    pyenv_local: '3.11.4'
     pyenv_group: github
     pyenv_owner: github
     pyenv_root: "/home/{{ linux_user }}/.pyenv"
-    pyenv_python_installs: ['3.9.2', '3.8.7']
+    pyenv_python_installs: ['3.11.4', '3.8.7']
     pyenv_pip_packages:
-      - python_version: 3.9.2
+      - python_version: 3.11.4
         pip_packages:
           - name: pip
             version: latest
@@ -29,7 +29,7 @@ provisioner:
             version: '2.9.3'
           - name: yamllint
           - name: docker
-        pip_executable: "{{ pyenv_root }}/versions/3.9.2/bin/pip"
+        pip_executable: "{{ pyenv_root }}/versions/3.11.4/bin/pip"
       - python_version: 3.8.7
         pip_packages:
           - name: pip
