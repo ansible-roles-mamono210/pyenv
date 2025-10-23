@@ -12,6 +12,7 @@ provisioner:
   config_options:
     defaults:
       callbacks_enabled: ansible.posix.profile_tasks
+      roles_path: "$HOME/.ansible/roles/:/tmp"
   connection_options:
     linux_user: github
     pyenv_local: '3.11.4'
@@ -40,6 +41,8 @@ provisioner:
           - name: yamllint
           - name: docker
         pip_executable: "{{ pyenv_root }}/versions/3.8.7/bin/pip"
+    users:
+      - name: github
 verifier:
   name: ansible
 scenario:

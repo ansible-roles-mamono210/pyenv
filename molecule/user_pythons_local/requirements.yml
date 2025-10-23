@@ -1,4 +1,4 @@
 ---
 roles:
   - name: user
-    src: https://github.com/ansible-roles-matsumura/user.git
+    src: https://github.com/ansible-roles-mamono210/user.git

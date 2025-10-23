@@ -12,6 +12,7 @@ provisioner:
   config_options:
     defaults:
       callbacks_enabled: ansible.posix.profile_tasks
+      roles_path: "$HOME/.ansible/roles/:/tmp"
   connection_options:
     linux_user: github
     pyenv_local: '3.11.4'
@@ -19,6 +20,8 @@ provisioner:
     pyenv_owner: github
     pyenv_root: "/home/{{ linux_user }}/.pyenv"
     pyenv_python_installs: ['3.11.4', '3.8.7', '3.7.10']
+    users:
+      - name: github
 verifier:
   name: ansible
 scenario:

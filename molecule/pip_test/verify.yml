@@ -24,7 +24,7 @@
         chdir: "/home/{{ linux_user }}"
       changed_when: false
 
-    - name: Check pip is upgraded
+    - name: Check pip is upgraded (Python 3.11.4)
       become: yes
       become_user: "{{ linux_user }}"
       ansible.builtin.shell: |
@@ -32,11 +32,11 @@
       register: pip_upgraded
       changed_when: false
 
-    - name: Make sure pip is upgraded
+    - name: Make sure pip is upgraded (Python 3.11.4)
       ansible.builtin.debug:
         var: pip_upgraded
 
-    - name: Check whether Ansible is installed
+    - name: Check whether Ansible is installed (Python 3.11.4)
       become: yes
       become_user: "{{ linux_user }}"
       ansible.builtin.shell: |
@@ -44,11 +44,11 @@
       register: ansible_installed
       changed_when: false
 
-    - name: Make sure Ansible is installed
+    - name: Make sure Ansible is installed (Python 3.11.4)
       ansible.builtin.debug:
         var: ansible_installed
 
-    - name: Check whether yamllint is installed
+    - name: Check whether yamllint is installed (Python 3.11.4)
       become: yes
       become_user: "{{ linux_user }}"
       ansible.builtin.shell: |
@@ -56,7 +56,7 @@
       register: yamllint_installed
       changed_when: false
 
-    - name: Make sure yamllint is installed
+    - name: Make sure yamllint is installed (Python 3.11.4)
       ansible.builtin.debug:
         var: yamllint_installed
 
@@ -69,7 +69,7 @@
         chdir: "/home/{{ linux_user }}"
       changed_when: false
 
-    - name: Check pip is upgraded
+    - name: Check pip is upgraded (Python 3.8.7)
       become: yes
       become_user: "{{ linux_user }}"
       ansible.builtin.shell: |
@@ -77,11 +77,11 @@
       register: pip_upgraded
       changed_when: false
 
-    - name: Make sure pip is upgraded
+    - name: Make sure pip is upgraded (Python 3.8.7)
       ansible.builtin.debug:
         var: pip_upgraded
 
-    - name: Check whether Ansible is installed
+    - name: Check whether Ansible is installed (Python 3.8.7)
       become: yes
       become_user: "{{ linux_user }}"
       ansible.builtin.shell: |
@@ -89,11 +89,11 @@
       register: ansible_installed
       changed_when: false
 
-    - name: Make sure Ansible is installed
+    - name: Make sure Ansible is installed (Python 3.8.7)
       ansible.builtin.debug:
         var: ansible_installed
 
-    - name: Check whether yamllint is installed
+    - name: Check whether yamllint is installed (Python 3.8.7)
       become: yes
       become_user: "{{ linux_user }}"
       ansible.builtin.shell: |
@@ -101,7 +101,7 @@
       register: yamllint_installed
       changed_when: false
 
-    - name: Make sure yamllint is installed
+    - name: Make sure yamllint is installed (Python 3.8.7)
       ansible.builtin.debug:
         var: yamllint_installed
 
@@ -127,8 +127,9 @@
     - name: Make sure Pythons(s) installed
       ansible.builtin.assert:
         that:
-          - "'{{ item }}' in pyenv_versions.stdout"
-      with_items: "{{ pyenv_python_installs }}"
+          - "{{ item in pyenv_versions.stdout }}"
+        fail_msg: "Python {{ item }} is not installed. pyenv versions: {{ pyenv_versions.stdout }}"
+      loop: "{{ pyenv_python_installs }}"
       when:
         - pyenv_python_installs is defined
 

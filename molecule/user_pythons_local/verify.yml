@@ -28,8 +28,9 @@
     - name: Make sure Pythons(s) installed
       ansible.builtin.assert:
         that:
-          - "'{{ item }}' in pyenv_versions.stdout"
-      with_items: "{{ pyenv_python_installs }}"
+          - "{{ item in pyenv_versions.stdout }}"
+        fail_msg: "Python {{ item }} is not installed. pyenv versions: {{ pyenv_versions.stdout }}"
+      loop: "{{ pyenv_python_installs }}"
       when:
         - pyenv_python_installs is defined
 
