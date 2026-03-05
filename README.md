@@ -3,7 +3,7 @@
 Role Description
 =========
 
-Installs [pyenv](https://github.com/pyenv/pyenv) for CentOS7/Stream8.
+Installs [pyenv](https://github.com/pyenv/pyenv) for CentOS Stream.
 
 Requirements
 ------------
